@@ -1,0 +1,30 @@
+<p>
+ <b>Icon:</b>
+ <%= image_tag @project.icon %>
+</p>
+
+
+
+<p>
+  <b>Title:</b>
+  <%=h @project.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @project.description %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @project.url %>
+</p>
+
+<p>
+  <b>Is open:</b>
+  <%=h @project.is_open %>
+</p>
+
+
+<%= edit_link @project %> |
+<%= index_link @project %>

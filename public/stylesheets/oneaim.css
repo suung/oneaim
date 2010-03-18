@@ -1,0 +1,128 @@
+#logo {
+  position:relative;
+  align: center;
+  top: 50px;
+  width:100px;
+  height:100px;
+  background-image:url(http://www.oneaim.org/sites/all/themes/oneaim/images/header.gif);
+  left: 300px;
+
+}
+
+#main {
+  position:relative;
+  align: center;
+  width: 80%;
+  padding: 0.25em 0.667em 0.417em;
+  float: left;
+  top: 100px;
+}
+ 
+
+
+.first_navigation_tabnav {
+  background-color: #FFFFFF;
+  padding: 0;
+  height: 2em;
+  position: relative;
+  left: 300px;
+}
+ 
+.first_navigation_tabnav ul {
+  height: 2em;
+  margin: 0;
+  padding: 0 1.25em;
+}
+ 
+.first_navigation_tabnav li {
+  display: inline;
+  line-height: 1.167em;
+  padding: 0;
+}
+ 
+.first_navigation_tabnav li.secondary {
+  float: right;
+}
+ 
+.first_navigation_tabnav li a {
+  color: #626262;
+  text-decoration: none;
+  border: 0.083em solid #FFFFFF;
+  padding: 0.25em 0.667em 0.417em;
+  float: left;
+}
+
+
+.first_navigation_tabnav li a.active {
+  color: #FFFFFF;
+  font-weight: bold;
+  background:#ccc;
+  border: 0.083em solid #FFFFFF;
+}
+ 
+.first_navigation_tabnav li a:hover {
+  color: #90A8D8;
+}
+ 
+.first_navigation_tabnav li a.active:hover {
+  color: #90A8D8;
+}
+ 
+.first_navigation_tabnav_content {
+  background-color: #FFFFFF;
+  padding: 1.5em 0.417em;
+  margin-top: 3px;
+  border: 1px solid #666;
+}
+
+.second_navigation_tabnav {
+  background-color: #FFFFFF;
+  padding: 0;
+  height: 2em;
+  position:relative;
+  left: 300px;
+}
+ 
+.second_navigation_tabnav ul {
+  height: 2em;
+  margin: 0;
+  padding: 0 1.25em;
+}
+ 
+.second_navigation_tabnav li {
+  display: inline;
+  line-height: 1.167em;
+  padding: 0;
+}
+ 
+.second_navigation_tabnav li.secondary {
+  float: right;
+}
+ 
+.second_navigation_tabnav li a {
+  color: #626262;
+  text-decoration: none;
+  border: 0.083em solid #FFFFFF;
+  padding: 0.25em 0.667em 0.417em;
+  float: left;
+}
+ 
+.second_navigation_tabnav li a.active {
+  color: #FFFFFF;
+  font-weight: bold;
+  border: 0.083em solid #FFFFFF;
+}
+ 
+.second_navigation_tabnav li a:hover {
+  color: #90A8D8;
+}
+ 
+.second_navigation_tabnav li a.active:hover {
+  color: #90A8D8;
+}
+ 
+.second_navigation_tabnav_content {
+  padding: 1.5em 0.417em;
+  margin-top: 3px;
+  border: 1px solid #666;
+}

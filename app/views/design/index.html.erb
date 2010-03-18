@@ -1,0 +1,11 @@
+<% reference_url = 'http://de.selfhtml.org/navigation/css.htm' -%>
+<span style="color:green"><%= flash[:notice] %></span>
+
+<% form_remote_tag :url => save_design_url, :update => "admin_navigation_tabnav_content" do %>
+  <div style="float:right;width:50%;">
+    <%= link_to "Open in new Window", reference_url, :target => '_blank' %><br />
+    <%= content_tag(:iframe, 'no iframes supported :)', :src => reference_url, :style => 'width:100%;height:20em;') %>
+  </div>
+  <%= text_area :design, :css, :value => @css %>
+  <%= submit_tag "Save" %>
+<% end %>

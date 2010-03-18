@@ -1,0 +1,8 @@
+
+    <div id="login">
+     <% if logged_in? %>
+       <%= link_to_dialog "logout", logout_url %>
+     <% else %>
+       <%= link_to_dialog "login", new_user_session_url -%>    
+     <% end %> 
+   </div>

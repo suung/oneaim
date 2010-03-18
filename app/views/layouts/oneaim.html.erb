@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <title><%= yield :title %></title>
+    <%= stylesheet_link_tag 'oneaim', 'modalbox' %>
+    <%= javascript_include_tag :defaults, 'modalbox/modalbox' %>
+  </head>
+  <body>
+
+    <div id="logo">
+      &nbsp;
+    </div>
+    <%= render :partial => 'common/login' %>
+<div id="main">
+
+    <div id="nav_one">
+      <% tabnav(:first_navigation) do %>
+        <%= yield %>
+      <% end %>
+    </div>
+    <div id="nav_two">
+      <% tabnav(:second_navigation) do %>
+        <%= yield %>
+      <% end %>
+    </div>
+</div>
+  </body>
+</html>

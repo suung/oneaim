@@ -1,0 +1,22 @@
+<%  
+render_tabnav :first_navigation do 
+
+  Page.with_link.by_position.each do |page|
+    add_tab do |t|
+      t.named page.nav_link
+      t.links_to_remote :url => show_page_url(page)
+    end
+  end
+
+=begin
+  add_tab do |t|
+    t.named I18n.t(:about)
+    t.links_to_remote :url => about_url
+  end
+  add_tab do |t|
+    t.named I18n.t(:contact)
+    t.links_to_remote :url => contact_url
+  end
+=end
+end 
+%>
