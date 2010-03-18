@@ -8,10 +8,15 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      redirect_to one_admin_url
-    else
       render :update do |page|
-        page.replace_html "admin_navigation_tabnav_content", render(:action => :new)
+        page << "document.location = '#{one_admin_url}'"
+      end
+    else
+      flash[:errors] = "Wrong login"
+      render :update do |page|
+        page << "Modalbox.hide();"
+        page.replace_html "loginerrors", flash[:errors]
+        page.show 'loginerrors'
       end
     end
   end
