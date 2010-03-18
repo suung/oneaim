@@ -1,0 +1,47 @@
+module Widgets
+  class Tab
+    include Highlightable
+    include Disableable
+    attr_accessor :link, :remote_link, :name, :html, :li_options, :extras, :additional_breadcrumb_name, :additional_breadcrumb_link
+    
+    def initialize(opts={})
+      @name = opts[:name] 
+      @link = opts[:link] || {}
+      @remote_link = opts[:remote_link] || nil
+      @li_options = opts[:li_options] || {} # Extra attributes to be able to set float right
+      @extras = opts[:extras] || "" # Extra attribute to allow additional content in tabnav
+      
+      # wrap highlights into an array if only one hash has been passed
+      opts[:highlights] = [opts[:highlights]] if opts[:highlights].kind_of?(Hash)
+      self.highlights = opts[:highlights] || []
+      self.disabled_if opts[:disabled_if] || proc { false }
+      @html = opts[:html] || {} 
+      @html[:title] = opts[:title] 
+     
+      yield(self) if block_given?
+      
+      self.highlights << @link if link? # it does highlight on itself
+      raise ArgumentError, 'you must provide a name' unless @name
+    end
+    
+    # title is a shortcut to html[:title]
+    def title; @html[:title]; end
+    def title=(new_title); @html[:title]=new_title; end
+    
+    # more idiomatic ways to set tab properties
+    def links_to(l); @link = l; end
+    def links_to_remote(rl); 
+      @remote_link = rl; 
+      #remote links MUST have a dom_id
+      #if not given I'll generate a random one
+      @html[:id] ||= "tab_#{rand(99999)}"
+    end
+    def named(n); @name = n; end
+    def titled(t); @html[:title] = t; end
+    def defines_additional_breadcrumb(name,link); @additional_breadcrumb_name = name;  @additional_breadcrumb_link = link; end
+    
+    def link?
+      @link && !@link.empty?
+    end
+  end
+end
