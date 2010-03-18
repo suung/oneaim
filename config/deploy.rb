@@ -72,13 +72,16 @@ namespace :oneaim do
     run "mkdir -p #{deploy_to}/#{shared_dir}/tmp/sessions"
     run "mkdir -p #{deploy_to}/#{shared_dir}/tmp/cache"
     run "mkdir -p #{deploy_to}/#{shared_dir}/tmp/sockets"
+    run "mkdir -p #{deploy_to}/#{shared_dir}/logs"
     run "mkdir -p #{deploy_to}/#{shared_dir}/config"
   end
 
   task :link_to_shared do
     run "rm -rf #{current_release}/tmp"
     run "ln -nfs #{shared_path}/tmp #{current_release}/tmp"
-    run "rm #{current_release}/config/database.yml"
+    run "rm -rf #{current_release}/log"
+    run "ln -nfs #{shared_path}/log #{current_release}/log"
+    run "rm -f #{current_release}/config/database.yml"
     run "ln -nfs #{shared_path}/config/database.yml #{current_release}/config/"
   end
 end
