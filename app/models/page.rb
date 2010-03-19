@@ -5,10 +5,13 @@ class Page < ActiveRecord::Base
   
   before_create :require_position
   
+  validates_presence_of :title
+  validates_presence_of :body
+  
   
   # FIXME refactor to SQL MAX
   def require_position
-    highest_page = Page.find(:first, :select => [:id], :order => [:position]).max
+    highest_page = Page.find(:first, :select => 'id, position', :order => [:position])
     position = highest_page ? highest_page.position + 1 : 1
   end
 
