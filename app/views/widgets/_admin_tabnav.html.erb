@@ -3,19 +3,19 @@ render_tabnav :admin_navigation, :generate_css => true do
   add_tab do |t|
     t.named I18n.t(:users)
     t.links_to_remote :url => users_url
-  end
+  end if logged_in?
   add_tab do |t|
     t.named I18n.t(:pages)
     t.links_to_remote :url => pages_url
-  end
+  end if logged_in?
   add_tab do |t|
    t.named I18n.t(:projects)
    t.links_to_remote :url => projects_url
-  end
+  end if logged_in?
   add_tab do |t|
     t.named I18n.t(:design)
     t.links_to_remote :url => design_url
-  end
+  end if logged_in?
 
 end 
 %>
