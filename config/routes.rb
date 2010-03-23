@@ -6,9 +6,12 @@ ActionController::Routing::Routes.draw do |map|
   map.design "/one/design", :controller => "design"
   map.save_design "/one/design/save", :controller => "design", :action => "save"
   
+
+  
   map.show_page '/display/:id', :controller => 'application', :action => 'display'
   
   map.with_options :controller => 'application' do |m|
+    m.css_route "/stylesheets/oneaim.css", :action => 'load_css'
     m.about '/about', :action => 'about'
     m.contact '/contact', :action => 'contact'
     m.list_projects '/list_projects/:state', :action => 'projects', :state => 'open'

@@ -54,6 +54,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  
+  def load_css
+    @css = File.read(File.join Rails.root, 'tmp', 'stylesheets', 'oneaim.css')
+    render :text => @css, :content_type => "text/css"
+  end
+  
   private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
