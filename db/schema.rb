@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100318001619) do
+ActiveRecord::Schema.define(:version => 20100326180901) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(:version => 20100318001619) do
     t.string   "title"
     t.text     "description"
     t.string   "url"
-    t.boolean  "is_open"
+    t.boolean  "is_open",     :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon"
+    t.string   "small_icon"
   end
 
   create_table "users", :force => true do |t|

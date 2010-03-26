@@ -1,0 +1,9 @@
+<div id="projects">
+<table>
+<tr>
+<% @projects.each do |project| %>
+<td id="project_1"><%= link_to_dialog (project.small_icon ? image_tag(project.small_icon) : project.title), show_project_url(project) %></td>
+<% end %>
+</tr>
+</table>
+</div>

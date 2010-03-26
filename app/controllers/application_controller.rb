@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     @page = Page.find(params[:id])
     set_current_page @page
     render :update do |page|
-      page.replace_html "nav_one", render(:partial => "widgets/first_navigation_partial")
+      page.replace_html "nav_one", :partial => "widgets/first_navigation_partial"
       page.replace_html "first_navigation_tabnav_content", "#{@page.title}<br/><br/>#{@page.body}"
     end
     
@@ -49,7 +49,8 @@ class ApplicationController < ActionController::Base
     end
     
     render :update do |page|
-      page.replace_html "nav_two", render(:partial => 'widgets/second_navigation_partial')
+      page.replace_html "nav_two", :partial => 'widgets/second_navigation_partial'
+      page.replace_html "second_navigation_tabnav_content", render(:partial => 'common/projects')
     end
     
   end
@@ -57,7 +58,7 @@ class ApplicationController < ActionController::Base
   def project
     @project = Project.find(params[:id])
     if request.xhr?
-      render :template => "projects/show", :layout => false 
+      render :template => "common/project", :layout => false 
     end
   end
 
