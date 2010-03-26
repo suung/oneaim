@@ -4,7 +4,8 @@ render_tabnav :first_navigation do
   Page.with_link.by_position.each do |page|
     add_tab do |t|
       t.named page.nav_link
-      t.links_to_remote :url => show_page_url(page)
+      t.links_to_remote :url => show_page_url(page), :update => nil
+      t.highlights_on proc { current_page == page.id}
     end
   end
 

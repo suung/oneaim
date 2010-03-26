@@ -2,11 +2,13 @@
 render_tabnav :second_navigation do  
      add_tab do |t|
      t.named I18n.t(:projects)
-       t.links_to_remote :url => list_projects_url(:state => 'open')
+       t.links_to_remote :url => list_projects_url(:state => 'open'), :update => nil
+       t.highlights_on proc {params[:state] == "open"}
        end
        add_tab do |t|
     t.named I18n.t(:finished_projects)
-    t.links_to_remote :url => list_projects_url(:state => 'finished')
+    t.links_to_remote :url => list_projects_url(:state => 'finished'), :update => nil
+    t.highlights_on proc {params[:state] == "finished"}
   end
 end 
 %>

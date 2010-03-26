@@ -15,14 +15,10 @@
 <div id="main">
 
     <div id="nav_one">
-      <% tabnav(:first_navigation) do %>
-        <%= yield %>
-      <% end %>
+      <%= render :partial => 'widgets/first_navigation_partial' %>
     </div>
     <div id="nav_two">
-      <% tabnav(:second_navigation) do %>
-        <%= yield %>
-      <% end %>
+    <%= render :partial => 'widgets/second_navigation_partial' %>
     </div>
 </div>
   </body>

@@ -1,1 +1,4 @@
 &nbsp;
+<%= javascript_tag(update_page do |page|
+      page.replace_html "first_navigation_tabnav_content", "#{@page.title}<br/><br/>#{@page.body}"
+    end) %>

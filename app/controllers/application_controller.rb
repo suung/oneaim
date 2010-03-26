@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper_method :current_user_session, :current_user, :logged_in?
+  helper_method :current_user_session, :current_user, :logged_in?, :current_page
 
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -13,14 +13,19 @@ class ApplicationController < ActionController::Base
   
   
   def index
-    render :template => 'common/index'
+    @page = Page.with_link.first
+    set_current_page @page
+    render :template => '/common/index'
   end
   
   def display
     @page = Page.find(params[:id])
-    respond_to do |format|
-      format.js { render :template => 'common/display'}
+    set_current_page @page
+    render :update do |page|
+      page.replace_html "nav_one", render(:partial => "widgets/first_navigation_partial")
+      page.replace_html "first_navigation_tabnav_content", "#{@page.title}<br/><br/>#{@page.body}"
     end
+    
   end
   
   
@@ -42,9 +47,11 @@ class ApplicationController < ActionController::Base
     elsif params[:state] == 'finished'
       @projects = Project.finished_ones
     end
-    respond_to do |format|
-      format.js { render :template => "common/projects" }
+    
+    render :update do |page|
+      page.replace_html "nav_two", render(:partial => 'widgets/second_navigation_partial')
     end
+    
   end
   
   def project
@@ -56,11 +63,24 @@ class ApplicationController < ActionController::Base
 
   
   def load_css
-    @css = File.read(File.join Rails.root, 'tmp', 'stylesheets', 'oneaim.css')
+    
+    path = File.join Rails.root, 'tmp', 'stylesheets', 'oneaim.css'
+    default_path = File.join Rails.root, 'public', 'stylesheets', 'oneaim-default.css'
+    @css = File.read(File.exist?(path) ? path : default_path)
     render :text => @css, :content_type => "text/css"
   end
   
   private
+
+  def current_page
+    @current_page ||= session[:current_page]
+  end
+  
+  def set_current_page page
+    session[:page] = page.id
+    @current_page = session[:page]
+  end
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
@@ -83,4 +103,7 @@ class ApplicationController < ActionController::Base
   def render_permission_denied
     redirect_to new_user_session_url
   end
+
+
+
 end

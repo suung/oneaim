@@ -54,7 +54,7 @@
 
 
 .first_navigation_tabnav li a.active {
-  color: #FFFFFF;
+  color: #333;
   font-weight: bold;
   background:#ccc;
   border: 0.083em solid #FFFFFF;
@@ -108,7 +108,7 @@
 }
  
 .second_navigation_tabnav li a.active {
-  color: #FFFFFF;
+  color: #333;
   font-weight: bold;
   border: 0.083em solid #FFFFFF;
 }
